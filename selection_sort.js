@@ -1,12 +1,31 @@
 var container = document.getElementById("array");
 
+  
+
 function stop() {
-  document.getElementById("array").innerHTML = "";
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  if (container.length != 0) {
+    document.getElementById("array").innerHTML = "";
+  }
 }
 function generateArray() {
+  stop();
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  //document.getElementById("btn2").disabled = true;
   if (!container.length == 0) {
     container.split(0, container.length);
   }
+ // document.getElementById("btn2").disabled = true;
   for (var i = 0; i < 50; i++) {
     var value = Math.floor(Math.random() * (100 - 5) + 5);
     var array_ele = document.createElement("div");
@@ -22,7 +41,12 @@ function generateArray() {
     container.appendChild(array_ele);
   }
 }
-
+function clearDiv() {
+  if (!container.length == 0) {
+    stop();
+    generateArray();
+  }
+}
 function swap(a, b) {
   return new Promise((resolve) => {
     var temp1 = a.style.height;
@@ -41,6 +65,12 @@ function swap(a, b) {
 }
 
 async function SelectionSort(delay = 100) {
+  document.getElementById("btn1").disabled = true;
+  document.getElementById("btn2").disabled = true;
+  document.getElementById("btn3").disabled = true;
+  document.getElementById("btn4").disabled = true;
+  document.getElementById("btn5").disabled = true;
+  document.getElementById("btn6").disabled = true;
   var blocks = document.querySelectorAll(".block");
   // console.log(blocks);
   var min_index;
@@ -72,36 +102,31 @@ async function SelectionSort(delay = 100) {
         blocks[j].style.backgroundColor = "#70e4f8";
       }
 
-      //blocks[min_index].style.backgroundColor = "#8800ea";
-
-      // blocks[j].style.backgroundColor = "#8800ea";
-      //blocks[min_index].style.backgroundColor = "#70e4f8";
+      
     }
-    /*console.log("Before");
-    console.log(
-      Number(blocks[min_index].childNodes[0].innerHTML) + "  " + min_index
-    );
-    console.log(Number(blocks[i].childNodes[0].innerHTML) + "   " + i);
-    console.log(i);*/
+   
     if (min_index !== i) {
       await swap(blocks[min_index], blocks[i]);
       blocks = document.querySelectorAll(".block");
     }
     blocks[i].style.backgroundColor = "#13CE66";
-    /* console.log("After");
-    console.log(
-      Number(blocks[min_index].childNodes[0].innerHTML) + "  " + min_index
-    );*/
-    //console.log(Number(blocks[i].childNodes[0].innerHTML) + "   " + i);
+   
   }
   blocks[i].style.backgroundColor = "#13CE66";
+
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
 }
 
 function create() {
+  stop();
   document.getElementById("array").innerHTML = "";
   generateArray();
 }
 
 //generateArray();
 
-//BubbleSort();
