@@ -1,9 +1,26 @@
 var container = document.getElementById("array");
 
+ 
+
 function stop() {
-  document.getElementById("array").innerHTML = "";
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  if (container.length != 0) {
+    document.getElementById("array").innerHTML = "";
+  }
 }
 function generateArray() {
+ // stop();
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
   if (!container.length == 0) {
     container.split(0, container.length);
   }
@@ -38,8 +55,20 @@ function swap(a, b) {
     });
   });
 }*/
-
+function clearDiv() {
+  if (!container.length == 0) {
+    document.getElementById("array").innerHTML = "";
+    generateArray();
+  }
+}
 async function InsertionSort(delay = 100) {
+  
+  document.getElementById("btn1").disabled = true;
+  document.getElementById("btn2").disabled = true;
+  document.getElementById("btn3").disabled = true;
+  document.getElementById("btn4").disabled = true;
+  document.getElementById("btn5").disabled = true;
+  document.getElementById("btn6").disabled = true;
   var blocks = document.querySelectorAll(".block");
   var i, j, key, height;
   for (i = 1; i < blocks.length; i++) {
@@ -82,12 +111,22 @@ async function InsertionSort(delay = 100) {
     );
   }
   blocks[blocks.length - 1].style.backgroundColor = " #13CE66";
+
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
 }
 
 function create() {
+  stop();
   document.getElementById("array").innerHTML = "";
   generateArray();
 }
+
+
 //generateArray();
 
 //BubbleSort();
