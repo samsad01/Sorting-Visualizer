@@ -1,9 +1,26 @@
 var container = document.getElementById("array");
 
+
+
 function stop() {
-  document.getElementById("array").innerHTML = "";
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  if (container.length != 0) {
+    document.getElementById("array").innerHTML = "";
+  }
 }
 function generateArray() {
+ 
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
   if (!container.length == 0) {
     container.split(0, container.length);
   }
@@ -21,6 +38,24 @@ function generateArray() {
     array_ele.appendChild(array_ele_label);
     container.appendChild(array_ele);
   }
+}
+
+function clearDiv() {
+  if (!container.length == 0) {
+    document.getElementById("array").innerHTML = "";
+    generateArray();
+  }
+}
+
+function isSorted2(arr)
+{
+  let n = arr.length;
+  for (let i = 1; i < n; i++){
+    if (arr[i - 1] > arr[i])
+      return false;
+  }
+
+  return true;
 }
 
 async function Heapify(n, i) {
@@ -88,6 +123,21 @@ async function HeapSort(n) {
 
     await Heapify(i, 0);
   }
+  var blk = document.querySelectorAll(".block");
+  var cArr = [];
+  for (var i = 0; i < blk.length; i++) {
+    cArr.push(Number(blk[i].childNodes[0].innerText));
+  }
+  console.log("merge end");
+  if(isSorted2(cArr) == true){
+    console.log("Reached here");
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  }
 }
 function isSorted() {
   let bb = document.querySelectorAll(".block");
@@ -102,8 +152,22 @@ function isSorted() {
   return true;
 }
 function heapSort() {
+  document.getElementById("btn1").disabled = true;
+  document.getElementById("btn2").disabled = true;
+  document.getElementById("btn3").disabled = true;
+  document.getElementById("btn4").disabled = true;
+  document.getElementById("btn5").disabled = true;
+  document.getElementById("btn6").disabled = true;
   var lol = document.querySelectorAll(".block");
   HeapSort(lol.length);
+
+  
+}
+
+function create() {
+  stop();
+  document.getElementById("array").innerHTML = "";
+  generateArray();
 }
 //generateArray();
 
