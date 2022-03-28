@@ -1,9 +1,32 @@
+
+
 var container = document.getElementById("array");
 
+ 
+function stop() {
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+  if (container.length != 0) {
+    document.getElementById("array").innerHTML = "";
+  }
+}
 function generateArray() {
+  stop();
+  //document.getElementById("btn1").disabled = true;
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
   if (!container.length == 0) {
     container.split(0, container.length);
   }
+  //document.getElementById("btn1").disabled = true;
   for (var i = 0; i < 50; i++) {
     var value = Math.floor(Math.random() * (100 - 5) + 5);
     var array_ele = document.createElement("div");
@@ -17,6 +40,13 @@ function generateArray() {
 
     array_ele.appendChild(array_ele_label);
     container.appendChild(array_ele);
+  }
+}
+
+function clearDiv() {
+  if (!container.length == 0) {
+    stop();
+    generateArray();
   }
 }
 
@@ -37,7 +67,18 @@ function swap(a, b) {
 }
 
 async function BubbleSort(delay = 100) {
+  document.getElementById("btn1").disabled = true;
+  document.getElementById("btn2").disabled = true;
+  document.getElementById("btn3").disabled = true;
+  document.getElementById("btn4").disabled = true;
+  document.getElementById("btn5").disabled = true;
+  document.getElementById("btn6").disabled = true;
+ 
+  if (!container.length == 0) {
+    container.split(0, container.length);
+  }
   var blocks = document.querySelectorAll(".block");
+  
   // console.log(blocks);
   for (var i = 0; i < blocks.length; i++) {
     var ran = blocks.length - 1 - i;
@@ -66,15 +107,25 @@ async function BubbleSort(delay = 100) {
     }
     blocks[ran].style.backgroundColor = "#13CE66";
     console.log(Number(blocks[ran].childNodes[0].innerHTML));
+    
   }
+ 
+  document.getElementById("btn1").disabled = false;
+  document.getElementById("btn2").disabled = false;
+  document.getElementById("btn3").disabled = false;
+  document.getElementById("btn4").disabled = false;
+  document.getElementById("btn5").disabled = false;
+  document.getElementById("btn6").disabled = false;
+ 
 }
-function stop() {
-  document.getElementById("array").innerHTML = "";
-}
+
 function create() {
+  stop();
   document.getElementById("array").innerHTML = "";
   generateArray();
 }
+
+
 //generateArray();
 
 //BubbleSort();
